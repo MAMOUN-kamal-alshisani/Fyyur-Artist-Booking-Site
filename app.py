@@ -437,16 +437,16 @@ def edit_artist_submission(artist_id):
   # artist record with ID <artist_id> using the new attributes
 
      Artist = Artist.query.get(artist_id)
-     Artist.name = request.form['name']
-     Artist.city = request.form['city']
-     Artist.state = request.form['state']
-     Artist.phone = request.form['phone']
-     Artist.genres = request.form['genres']
-     Artist.image_link = request.form['image_link']
-     Artist.facebook_link = request.form['facebook_link']
-     Artist.website_link = request.form['website_link'] 
-     Artist.seeking_venue = request.form['seeking_venue'] 
-     Artist.seeking_description = request.form['seeking_description']
+     Artist.name = request.form.get('name')
+     Artist.city = request.form.get('city')
+     Artist.state = request.form.get('state')
+     Artist.phone = request.form.get('phone')
+     Artist.genres = request.form.get('genres')
+     Artist.image_link = request.form.get('image_link')
+     Artist.facebook_link = request.form.get('facebook_link')
+     Artist.website_link = request.form.get('website_link') 
+     Artist.seeking_venue = request.form.get('seeking_venue') 
+     Artist.seeking_description = request.form.get('seeking_description')
      return redirect(url_for('show_artist', artist_id=artist_id))
 
 @app.route('/venues/<int:venue_id>/edit', methods=['GET'])
