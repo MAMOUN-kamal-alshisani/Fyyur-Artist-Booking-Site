@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 920b55f6a48b
+Revision ID: b0124389ec77
 Revises: 
-Create Date: 2023-06-09 19:22:00.076364
+Create Date: 2023-06-12 19:10:57.326581
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '920b55f6a48b'
+revision = 'b0124389ec77'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,13 +23,12 @@ def upgrade():
     sa.Column('name', sa.String(), nullable=False),
     sa.Column('city', sa.String(length=120), nullable=False),
     sa.Column('state', sa.String(length=120), nullable=False),
-    sa.Column('address', sa.String(length=120), nullable=False),
     sa.Column('phone', sa.String(length=120), nullable=False),
     sa.Column('genres', sa.ARRAY(sa.String(length=120)), nullable=False),
     sa.Column('image_link', sa.String(length=500), nullable=False),
     sa.Column('facebook_link', sa.String(length=120), nullable=True),
-    sa.Column('website', sa.String(length=120), nullable=True),
-    sa.Column('seeking_talent', sa.Boolean(), nullable=True),
+    sa.Column('website_link', sa.String(length=120), nullable=True),
+    sa.Column('seeking_venue', sa.Boolean(), nullable=True),
     sa.Column('seeking_description', sa.String(length=120), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
@@ -43,7 +42,7 @@ def upgrade():
     sa.Column('image_link', sa.String(length=500), nullable=False),
     sa.Column('facebook_link', sa.String(length=120), nullable=True),
     sa.Column('genres', sa.ARRAY(sa.String(length=120)), nullable=False),
-    sa.Column('website', sa.String(length=120), nullable=True),
+    sa.Column('website_link', sa.String(length=120), nullable=True),
     sa.Column('seeking_talent', sa.Boolean(), nullable=True),
     sa.Column('seeking_description', sa.String(length=120), nullable=True),
     sa.PrimaryKeyConstraint('id')
@@ -52,7 +51,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('artist_id', sa.Integer(), nullable=True),
     sa.Column('venue_id', sa.Integer(), nullable=True),
-    sa.Column('StartTime', sa.DateTime(), nullable=False),
+    sa.Column('start_time', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['artist_id'], ['artist.id'], ),
     sa.ForeignKeyConstraint(['venue_id'], ['venue.id'], ),
     sa.PrimaryKeyConstraint('id')
